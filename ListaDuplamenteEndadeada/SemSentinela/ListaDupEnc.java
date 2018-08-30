@@ -10,31 +10,43 @@ public class ListaDupEnc<Item>{
     }
 
     public void removerDoInicio(){
-        this.inicio = this.inicio.proximo;
-        this.inicio.anterior = null;
+        if(this.tamanho == 1){
+            this.inicio = null;
+            this.fim = null;
+        }else{
+            this.inicio = this.inicio.proximo;
+            this.inicio.anterior = this.fim;
+            this.fim.proximo = this.inicio;
+        }
+        this.tamanho--;
+        
     }
 
     public void removeElemento(Item item){
         if(!(isEmpty())){
             No x = this.inicio;
             
-            for(;x != null; x = x.proximo){
-                if(x.item.equals(item)){
-                    if(x == this.inicio){
-                        x.proximo.anterior = null;
-                        this.inicio = x.proximo;
-                    }else if(x == this.fim){
-                        this.fim = x.anterior;
-                        this.fim.proximo = null;
-                    }else{
+            do{
+                if(this.tamanho == 1){
+                    this.inicio = null;
+                    this.fim = null;
+                    break;
+                }else{
+                    if(x.item.equals(item)){
+                        
+                        System.out.println("asas");
+                        System.out.println(this.tamanho);
                         x.anterior.proximo = x.proximo;
                         x.proximo.anterior = x.anterior;
+                        x = null;
+                        break;
+                         
                     }
-                    x = null;
-                    this.tamanho--;
-                    break;  
+                    x = x.proximo;
                 }
-            }
+                
+            }while(x != this.fim && x != null);
+            this.tamanho--;
         }
     }
 
@@ -47,7 +59,10 @@ public class ListaDupEnc<Item>{
             this.inicio.anterior = novoNo;
             novoNo.proximo = this.inicio;
             this.inicio = novoNo;
+            
         }
+        this.fim.proximo = this.inicio;
+        this.inicio.anterior = this.fim;
         this.tamanho++;
     }
 
@@ -61,6 +76,8 @@ public class ListaDupEnc<Item>{
             novoNo.anterior = this.fim;
             this.fim = novoNo;
         }
+        this.fim.proximo = this.inicio;
+        this.inicio.anterior = this.fim;
         this.tamanho++;
     }
 
@@ -74,9 +91,15 @@ public class ListaDupEnc<Item>{
 
     public void imprimeLista(){
         No x = this.inicio;
-        for(;x != null; x = x.proximo){
-            System.out.println(x.item);
+        if(this.tamanho > 0){
+            do{
+                System.out.println(x.item);
+                x = x.proximo;
+            }while(x != this.fim);
+        }else{
+            System.out.println("Lista vazia!");
         }
+        
     }
 
     public class No<Tipo>{
