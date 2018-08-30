@@ -1,19 +1,19 @@
 import java.util.NoSuchElementException;
 
-public class Pilha <Item>{
+public class PilhaRedimencionavel <Item>{
     private Item[] vetor;
     private int tamanho;
 
-    public Pilha(int tamanho){
+    public PilhaRedimencionavel(int tamanho){
         this.vetor = (Item[]) new Object[tamanho];
         this.tamanho = 0;
     }
 
-    public Pilha(){
+    public PilhaRedimencionavel(){
         this(10);
     }
 
-    public void adiciona(Item item){
+    public void push(Item item){
         if(this.tamanho == vetor.length){
             redimenciona(this.tamanho * 2);
         }
@@ -22,17 +22,17 @@ public class Pilha <Item>{
         tamanho++;
     }
 
-    public Item remove(){
+    public Item pop(){
         if(isEmpty()){
             throw new NoSuchElementException("Pilha vazia");
-        }else{
-            Item topo = this.vetor[tamanho-1];
-            this.vetor[tamanho-1] = null;
-            tamanho--;
+        }
+        
+        tamanho--;
+        Item topo = this.vetor[tamanho];
+        this.vetor[tamanho] = null;
 
-            if(this.tamanho == (vetor.length / 4)){
-                redimenciona(this.vetor.length / 2);
-            }
+        if(this.tamanho == (vetor.length / 4)){
+            redimenciona(this.vetor.length / 2);
         }
         
         return topo;

@@ -14,7 +14,7 @@ public class FilaRedimencionavel<Item>{
     }
 
     public FilaRedimencionavel(){
-        this(10);
+        this(2);
     }
 
     public boolean isEmpty(){
@@ -25,8 +25,12 @@ public class FilaRedimencionavel<Item>{
         return tamanho;
     }
 
+    public int length(){
+        return this.vetor.length;
+    }
+
     public void redimenciona(int capacidade){
-        assert capacidade >= 0;
+        assert capacidade >= this.tamanho;
         Item[] novoVetor = (Item[]) new Object[capacidade];
 
         for(int k = 0; k < this.tamanho; k++){
@@ -38,7 +42,7 @@ public class FilaRedimencionavel<Item>{
         this.ultimo = this.tamanho;
     }
 
-    public void adicionarAFila(Item item){
+    public void enfileire(Item item){
         if(this.tamanho == this.vetor.length){
             redimenciona(2*this.vetor.length);
         }
@@ -53,7 +57,7 @@ public class FilaRedimencionavel<Item>{
         this.tamanho++;
     }
 
-    public Item removerDaFila(){
+    public Item desenfileire(){
         if(isEmpty()){
             throw new NoSuchElementException("Fila vazia!");
         }
