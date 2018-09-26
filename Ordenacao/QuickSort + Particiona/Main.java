@@ -1,14 +1,10 @@
 public class Main{
-    public static void main(String[]args){
-        QuickSort q = new QuickSort();
+    public static void main(String[] args){
+        Comparable [] vetor = new Comparable[] {"emanoel","Emerson", "Emanoel", "a", "c", "d"};
+        QuickSortParticiona.sort(vetor, 0,5);
 
-        int[] vetor = new int[]{12,11,13,5,6,7,9,1};
-        int r = vetor.length-1;
-        q.quicksort(vetor, 0, r);
-        System.out.print("[");
-        for(int i : vetor){
-            System.out.print(i+",");
+        for(Comparable a: vetor){
+            System.out.print(a+" ");
         }
-        System.out.println("]");
     }
 }
