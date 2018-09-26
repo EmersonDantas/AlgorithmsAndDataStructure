@@ -1,15 +1,15 @@
 public class SelectionSort{
-    public int[] selectionSort(int[] vetorDesordenado){
+    public Comparable[] selectionSort(Comparable[] vetorDesordenado){
         int minimo;
         for(int i = 0; i < vetorDesordenado.length;i++){
             minimo = i;
             for(int j = i + 1; j < vetorDesordenado.length;j++){
-                if(vetorDesordenado[j] < vetorDesordenado[minimo]){
+                if(vetorDesordenado[j].compareTo(vetorDesordenado[minimo]) < 0){
                     minimo = j;
                 }
             }
 
-            int aux = vetorDesordenado[i];
+            Comparable aux = vetorDesordenado[i];
             vetorDesordenado[i] = vetorDesordenado[minimo];
             vetorDesordenado[minimo] = aux;
         }
