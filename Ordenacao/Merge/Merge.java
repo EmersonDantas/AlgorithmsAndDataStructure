@@ -4,7 +4,7 @@ public class Merge{
         int j = q + 1;
         //aux é um vetor com o tamanho do vetor
         int[] aux = new int[vetor.length];
-        for(int k = 0; k < vetor.length; k++){
+        for(int k = p; k < r; k++){
             aux[k] = vetor[k];
         }
 
