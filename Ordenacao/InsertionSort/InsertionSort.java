@@ -1,12 +1,12 @@
 public class InsertionSort{
 
-    public int[] sort(int[]vetor){
-        int chave;
+    public Comparable[] sort(Comparable[]vetor){
+        Comparable chave;
         int i;
         for(int j = 1; j < vetor.length; j++){
             chave = vetor[j];
             i = j-1;
-            while(i >= 0 && vetor[i] > chave){
+            while(i >= 0 && vetor[i].compareTo(chave) > 0){
                 vetor[i+1] = vetor[i];
                 i--;
             }

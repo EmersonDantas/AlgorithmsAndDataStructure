@@ -2,10 +2,10 @@ public class Test{
     public static void main(String[]args){
         InsertionSort ordenador = new InsertionSort();
 
-        int[] vetorOrdenado = ordenador.sort(new int[] {7,4,1,2,0,3,0,-1});
+        Comparable[] vetorOrdenado = ordenador.sort(new Comparable[] {"f","d","b","C","b","a","e"});
         
         System.out.print("Vetor ordenado = [");
-        for(int a: vetorOrdenado){
+        for(Comparable a: vetorOrdenado){
             System.out.print(a+",");
         }
         System.out.println("]");
