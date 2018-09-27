@@ -10,11 +10,8 @@ public class InsertionSort{
                 vetor[i+1] = vetor[i];
                 i--;
             }
-
             vetor[i+1] = chave;
         }
-
         return vetor;
     }
-
 }
